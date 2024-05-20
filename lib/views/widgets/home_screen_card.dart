@@ -15,6 +15,8 @@ class HomeScreenCard extends StatelessWidget {
       child: Row(
         children: [
           CustomButton(),
+          CustomButton(),
+          CustomButton(),
         ],
       ),
     );
