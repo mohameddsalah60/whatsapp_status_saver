@@ -10,9 +10,12 @@ class CustomItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        color: kPrimaryColor,
-      ),
+          borderRadius: BorderRadius.circular(16),
+          color: kPrimaryColor,
+          image: const DecorationImage(
+            fit: BoxFit.fill,
+            image: AssetImage('assets/images/image.jpg'),
+          )),
     );
   }
 }
