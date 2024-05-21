@@ -10,7 +10,6 @@ class HomeScreenHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.sizeOf(context).height * .13,
       color: kPrimaryColor,
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 24),
       child: ListTile(
