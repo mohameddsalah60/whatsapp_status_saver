@@ -10,9 +10,13 @@ class ImageCubit extends Cubit<ImageState> {
     emit(ImageLoading());
     try {
       list = WhatsAppStatus.getStatus(endsWith: '.jpg');
-      emit(
-        GetImageLoaded(images: list),
-      );
+      if (list.isNotEmpty) {
+        emit(
+          GetImageLoaded(images: list),
+        );
+      } else if (list.isEmpty) {
+        emit(NoFoundImage());
+      }
     } catch (e) {
       emit(
         ImageFailure(e.toString()),

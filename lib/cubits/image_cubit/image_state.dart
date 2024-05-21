@@ -6,6 +6,8 @@ class ImageCubitInitial extends ImageState {}
 
 class ImageLoading extends ImageState {}
 
+class NoFoundImage extends ImageState {}
+
 class GetImageLoaded extends ImageState {
   final List images;
 
