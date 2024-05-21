@@ -11,7 +11,7 @@ class HomeScreenHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: kPrimaryColor,
-      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 24),
+      padding: const EdgeInsets.only(top: 24, bottom: 6, left: 8, right: 8),
       child: ListTile(
         title: const Text(
           'Status UP',

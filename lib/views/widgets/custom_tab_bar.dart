@@ -15,9 +15,14 @@ class CustomTab extends StatelessWidget {
         child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Icon(icon),
+        Icon(
+          icon,
+        ),
         Text(
           title,
+          style: const TextStyle(
+            fontSize: 16,
+          ),
         ),
       ],
     ));
