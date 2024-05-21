@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:whatsapp_status_saver/service/save_file.dart';
 
 import 'item_viewer.dart';
 import 'modal_bottom_sheet_item.dart';
@@ -39,9 +41,14 @@ customModalBottomSheet(BuildContext context, File file) {
             height: 10,
           ),
           const SizedBox(height: 8),
-          const ModalBottomSheetItem(
-            icon: FontAwesomeIcons.save,
-            title: 'Save image',
+          GestureDetector(
+            onTap: () async {
+              await copyFile(file, 'images');
+            },
+            child: const ModalBottomSheetItem(
+              icon: FontAwesomeIcons.save,
+              title: 'Save image',
+            ),
           ),
         ],
       ),
