@@ -1,7 +1,5 @@
-import 'package:be_widgets/be_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'home_screen_card.dart';
 import 'home_screen_header.dart';
 
 class HomeScreenBody extends StatelessWidget {
@@ -9,10 +7,6 @@ class HomeScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BeBadge(
-      position: BeBadgePosition.bottomCenter,
-      badge: const HomeScreenCard(),
-      child: const HomeScreenHeader(),
-    );
+    return const HomeScreenHeader();
   }
 }
