@@ -13,10 +13,6 @@ class CustomItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         color: kPrimaryColor,
       ),
-      margin: const EdgeInsets.symmetric(
-        horizontal: 8,
-        vertical: 8,
-      ),
     );
   }
 }
