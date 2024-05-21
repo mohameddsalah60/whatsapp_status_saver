@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:whatsapp_status_saver/cubits/image_cubit/image_cubit.dart';
 
 import 'views/home_screen_view.dart';
 
@@ -11,11 +13,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          fontFamily: 'Poppins',
-        ),
-        home: const HomeScreenView());
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => ImageCubit()),
+      ],
+      child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            fontFamily: 'Poppins',
+          ),
+          home: const HomeScreenView()),
+    );
   }
 }

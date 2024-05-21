@@ -6,10 +6,10 @@ class ImageCubitInitial extends ImageState {}
 
 class ImageLoading extends ImageState {}
 
-class GetImageSuccess extends ImageState {
-  final List<ImagesModel> images;
+class GetImageLoaded extends ImageState {
+  final List images;
 
-  GetImageSuccess({required this.images});
+  GetImageLoaded({required this.images});
 }
 
 class ImageFailure extends ImageState {

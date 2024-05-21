@@ -5,8 +5,9 @@ import 'custom_item.dart';
 class ImageGridView extends StatelessWidget {
   const ImageGridView({
     super.key,
+    required this.items,
   });
-
+  final List items;
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
@@ -19,9 +20,11 @@ class ImageGridView extends StatelessWidget {
         mainAxisSpacing: 10,
         crossAxisSpacing: 10,
       ),
-      itemCount: 8,
+      itemCount: items.length,
       itemBuilder: (context, index) {
-        return const CustomItem();
+        return CustomItem(
+          image: items[index],
+        );
       },
     );
   }
