@@ -1,11 +1,11 @@
+import 'dart:developer';
 import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:get_thumbnail_video/video_thumbnail.dart';
-import 'package:whatsapp_status_saver/constants.dart';
 
-import 'play_video_icon.dart';
+import 'video_item_handling.dart';
 
 class VidoeItem extends StatelessWidget {
   const VidoeItem({
@@ -21,43 +21,27 @@ class VidoeItem extends StatelessWidget {
       future: getVideoThumbnail(file),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              color: kPrimaryColor,
-            ),
-          );
+          return const VideoCircularIndicator();
         } else if (snapshot.hasData && snapshot.data != null) {
-          return Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                color: kPrimaryColor,
-                image: DecorationImage(
-                  fit: BoxFit.fill,
-                  image: MemoryImage(snapshot.data as Uint8List),
-                )),
-            child: const PlayVideoIcon(),
-          );
+          return VideoItemThumbnailSuccessful(thumbnail: snapshot.data);
+        } else if (snapshot.hasError) {
+          return const VideoItemThumbnailError();
         } else {
-          return Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              color: kPrimaryColor,
-            ),
-            child: const Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
+          return const VideoItemThumbnailError();
         }
       },
     );
   }
 
   Future<Uint8List?> getVideoThumbnail(File file) async {
-    final uint8list = await VideoThumbnail.thumbnailData(
-      video: file.path,
-      quality: 25,
-    );
-    return uint8list;
+    try {
+      return await VideoThumbnail.thumbnailData(
+        video: file.path,
+        quality: 25,
+      );
+    } catch (e) {
+      log('Error generating video thumbnail: $e');
+      return null;
+    }
   }
 }
