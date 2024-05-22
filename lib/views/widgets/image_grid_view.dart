@@ -28,7 +28,7 @@ class ImageGridView extends StatelessWidget {
             customModalBottomSheet(context, images[index]);
           },
           child: CustomItem(
-            image: images[index],
+            file: images[index],
           ),
         );
       },
