@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'home_screen_header.dart';
 import 'image_tab_bar_view.dart';
 import 'tab_bar_header.dart';
+import 'video_tab_bar_view.dart';
 
 class HomeScreenBody extends StatelessWidget {
   const HomeScreenBody({super.key});
@@ -22,7 +21,7 @@ class HomeScreenBody extends StatelessWidget {
             child: TabBarView(
               children: [
                 ImageTabBarView(),
-                Center(child: Text('Content of Tab Two')),
+                VideoTabBarView(),
                 Center(child: Text('Content of Tab Three')),
               ],
             ),
