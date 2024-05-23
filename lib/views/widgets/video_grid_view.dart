@@ -23,8 +23,13 @@ class VideoGridView extends StatelessWidget {
       ),
       itemCount: videos.length,
       itemBuilder: (context, index) {
-        return CustomItem(
-          file: videos[index],
+        return GestureDetector(
+          onTap: () {
+            customModalBottomSheet(context, videos[index], 'Video');
+          },
+          child: CustomItem(
+            file: videos[index],
+          ),
         );
       },
     );

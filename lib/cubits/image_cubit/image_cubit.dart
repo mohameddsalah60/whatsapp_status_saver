@@ -5,7 +5,7 @@ part 'image_state.dart';
 
 class ImageCubit extends Cubit<ImageState> {
   ImageCubit() : super(ImageCubitInitial());
-  late List list = [];
+  late List list;
   getImagesStatus() {
     emit(ImageLoading());
     try {

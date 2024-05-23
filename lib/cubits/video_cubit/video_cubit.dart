@@ -5,15 +5,13 @@ part 'video_state.dart';
 
 class VideoCubit extends Cubit<VideoState> {
   VideoCubit() : super(VideoInitial());
-  late List list = [];
-  getImagesStatus() {
+  late List list;
+  getVideosStatus() {
     emit(VideoLoading());
     try {
       list = WhatsAppStatus.getStatus(endsWith: '.mp4');
       if (list.isNotEmpty) {
-        emit(
-          GetVideosLoaded(videos: list),
-        );
+        emit(GetVideosLoaded(videos: list));
       } else if (list.isEmpty) {
         emit(NoFoundVideo());
       }

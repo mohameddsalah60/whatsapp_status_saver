@@ -62,7 +62,9 @@ class VideoCircularIndicator extends StatelessWidget {
         color: kPrimaryColor,
       ),
       child: const Center(
-        child: CircularProgressIndicator(),
+        child: CircularProgressIndicator(
+          color: Colors.white,
+        ),
       ),
     );
   }

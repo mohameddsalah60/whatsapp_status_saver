@@ -1,15 +1,14 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:whatsapp_status_saver/service/save_file.dart';
+import 'package:whatsapp_status_saver/views/widgets/video_item_viewer.dart';
 
-import 'item_viewer.dart';
+import 'image_item_viewer.dart';
 import 'modal_bottom_sheet_item.dart';
 
-customModalBottomSheet(BuildContext context, File file) {
+customModalBottomSheet(BuildContext context, File file, String type) {
   return showModalBottomSheet(
     context: context,
     builder: (context) => Container(
@@ -19,20 +18,29 @@ customModalBottomSheet(BuildContext context, File file) {
         children: [
           GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return ItemViewer(
-                      file: file,
+              file.path.endsWith('.mp4')
+                  ? Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return VideoViewer(file: file);
+                        },
+                      ),
+                    )
+                  : Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return ImageViewer(file: file);
+                        },
+                      ),
                     );
-                  },
-                ),
-              );
             },
-            child: const ModalBottomSheetItem(
-              icon: FontAwesomeIcons.image,
-              title: 'View image',
+            child: ModalBottomSheetItem(
+              icon: file.path.endsWith('.mp4')
+                  ? Icons.videocam
+                  : FontAwesomeIcons.image,
+              title: 'View $type',
             ),
           ),
           const SizedBox(height: 8),
@@ -43,11 +51,11 @@ customModalBottomSheet(BuildContext context, File file) {
           const SizedBox(height: 8),
           GestureDetector(
             onTap: () async {
-              await copyFile(file, 'images');
+              await copyFile(file);
             },
-            child: const ModalBottomSheetItem(
-              icon: FontAwesomeIcons.save,
-              title: 'Save image',
+            child: ModalBottomSheetItem(
+              icon: FontAwesomeIcons.floppyDisk,
+              title: 'Save $type',
             ),
           ),
         ],

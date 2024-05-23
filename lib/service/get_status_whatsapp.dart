@@ -10,7 +10,6 @@ class WhatsAppStatus {
           .listSync()
           .where((element) => element.path.endsWith(endsWith))
           .toList(growable: false);
-      print(itemsList);
       return itemsList;
     } else {
       return [];

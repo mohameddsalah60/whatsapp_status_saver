@@ -25,7 +25,7 @@ class ImageGridView extends StatelessWidget {
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
-            customModalBottomSheet(context, images[index]);
+            customModalBottomSheet(context, images[index], 'Image');
           },
           child: CustomItem(
             file: images[index],

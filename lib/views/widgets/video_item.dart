@@ -3,7 +3,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:get_thumbnail_video/video_thumbnail.dart';
+import 'package:video_thumbnail/video_thumbnail.dart';
 
 import 'video_item_handling.dart';
 
@@ -37,7 +37,7 @@ class VidoeItem extends StatelessWidget {
     try {
       return await VideoThumbnail.thumbnailData(
         video: file.path,
-        quality: 25,
+        imageFormat: ImageFormat.JPEG,
       );
     } catch (e) {
       log('Error generating video thumbnail: $e');

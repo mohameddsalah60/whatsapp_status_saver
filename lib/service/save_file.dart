@@ -2,12 +2,12 @@ import 'dart:io';
 
 import 'package:whatsapp_status_saver/constants.dart';
 
-Future<void> copyFile(File status, String type) async {
+Future<void> copyFile(File status) async {
   try {
     final File sourceFile = status;
     if (await sourceFile.exists()) {
       // Ensure the destination directory exists
-      final Directory destinationDir = Directory('$savedStatusFiles$type');
+      final Directory destinationDir = Directory(savedStatusFiles);
       if (!(await destinationDir.exists())) {
         await destinationDir.create(recursive: true);
       }
